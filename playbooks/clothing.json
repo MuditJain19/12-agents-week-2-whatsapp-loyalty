@@ -1,0 +1,52 @@
+{
+  "name": "Clothing / saree store",
+  "default_cycle_days": 75,
+  "min_days_between_messages": 10,
+  "max_messages_per_30_days": 3,
+  "notes": "Purchases are lumpy and occasion-driven. Lead with festivals and new stock, not discounts.",
+  "moments": [
+    {
+      "id": "thank_you",
+      "priority": 2,
+      "rule": {
+        "type": "days_after_visit",
+        "days": 1
+      },
+      "template": "Namaste {name} ji! {shop} se {category} lene ke liye dhanyavaad. Koi alteration ya size change chahiye ho toh isi number par message kar dijiye. 🙏"
+    },
+    {
+      "id": "review_ask",
+      "priority": 4,
+      "rule": {
+        "type": "days_after_visit",
+        "days": 4,
+        "first_visit_only": true
+      },
+      "template": "{name} ji, umeed hai aapko {category} pasand aayi! 30 second mein ek review de denge toh humein bahut madad milegi: {review_link}"
+    },
+    {
+      "id": "festival",
+      "priority": 1,
+      "rule": {
+        "type": "calendar",
+        "days_before": 5,
+        "events": [
+          "diwali",
+          "wedding_season"
+        ]
+      },
+      "template": "{name} ji, {event} aa raha hai! {shop} mein nayi {top_category} collection aa gayi hai. Is hafte aakar ek baar zaroor dekhiye. ✨"
+    },
+    {
+      "id": "win_back",
+      "priority": 3,
+      "rule": {
+        "type": "cycle",
+        "at": 1.6
+      },
+      "template": "{name} ji, kaafi samay ho gaya! {shop} mein naye designs aaye hain jo aapko pasand aayenge. Kabhi bhi aaiye, hum aapka intezaar karenge. 🙏"
+    }
+  ],
+  "id": "clothing",
+  "max_messages_per_day": 30
+}

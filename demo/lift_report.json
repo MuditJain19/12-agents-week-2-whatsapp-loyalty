@@ -1,0 +1,100 @@
+{
+  "clothing": {
+    "reminders_and_winbacks": {
+      "window_days": 14,
+      "messaged": {
+        "n": 92,
+        "back": 21
+      },
+      "held_out": {
+        "n": 29,
+        "back": 2
+      },
+      "rate_messaged": 0.22826086956521738,
+      "rate_held_out": 0.06896551724137931,
+      "diff": 0.15929535232383807,
+      "ci95": [
+        0.03335300409889819,
+        0.28523770054877795
+      ]
+    }
+  },
+  "kirana": {
+    "reminders_and_winbacks": {
+      "window_days": 14,
+      "messaged": {
+        "n": 1235,
+        "back": 1052
+      },
+      "held_out": {
+        "n": 233,
+        "back": 200
+      },
+      "rate_messaged": 0.8518218623481781,
+      "rate_held_out": 0.8583690987124464,
+      "diff": -0.0065472363642682385,
+      "ci95": [
+        -0.0555068445412006,
+        0.04241237181266412
+      ]
+    }
+  },
+  "salon": {
+    "reminders_and_winbacks": {
+      "window_days": 14,
+      "messaged": {
+        "n": 599,
+        "back": 258
+      },
+      "held_out": {
+        "n": 100,
+        "back": 35
+      },
+      "rate_messaged": 0.4307178631051753,
+      "rate_held_out": 0.35,
+      "diff": 0.08071786310517531,
+      "ci95": [
+        -0.020831113740344603,
+        0.18226683995069523
+      ]
+    }
+  },
+  "sweets": {
+    "reminders_and_winbacks": {
+      "window_days": 14,
+      "messaged": {
+        "n": 90,
+        "back": 28
+      },
+      "held_out": {
+        "n": 13,
+        "back": 4
+      },
+      "rate_messaged": 0.3111111111111111,
+      "rate_held_out": 0.3076923076923077,
+      "diff": 0.0034188034188034067,
+      "ci95": [
+        -0.2650892159233157,
+        0.2719268227609225
+      ]
+    }
+  },
+  "all": {
+    "window_days": 14,
+    "messaged": {
+      "n": 2016,
+      "back": 1359
+    },
+    "held_out": {
+      "n": 375,
+      "back": 241
+    },
+    "rate_messaged": 0.6741071428571429,
+    "rate_held_out": 0.6426666666666667,
+    "diff": 0.031440476190476185,
+    "ci95": [
+      -0.0212015446336803,
+      0.08408249701463266
+    ]
+  }
+}

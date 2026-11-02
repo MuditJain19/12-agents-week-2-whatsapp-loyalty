@@ -1,0 +1,15 @@
+{
+  "_note": "Dates for 2026. Check your local calendar and add your own events (store anniversary, local fairs).",
+  "diwali": {
+    "label": "Diwali",
+    "date": "2026-11-08"
+  },
+  "bhai_dooj": {
+    "label": "Bhai Dooj",
+    "date": "2026-11-10"
+  },
+  "wedding_season": {
+    "label": "Shaadi ka season",
+    "date": "2026-11-21"
+  }
+}

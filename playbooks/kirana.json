@@ -1,0 +1,41 @@
+{
+  "name": "Kirana / grocery store",
+  "default_cycle_days": 10,
+  "min_days_between_messages": 6,
+  "max_messages_per_30_days": 4,
+  "notes": "Frequent, habitual buying. Reminders work when they save a trip; never spam.",
+  "moments": [
+    {
+      "id": "due_reminder",
+      "priority": 2,
+      "rule": {
+        "type": "cycle",
+        "at": 1.25
+      },
+      "template": "Namaste {name} ji! {shop} se aapka mahine ka saaman? List bhej dijiye, hum ghar par deliver kar denge. 🛒"
+    },
+    {
+      "id": "festival",
+      "priority": 1,
+      "rule": {
+        "type": "calendar",
+        "days_before": 5,
+        "events": [
+          "diwali"
+        ]
+      },
+      "template": "{name} ji, {event} ki taiyari shuru! Dry fruits, ghee aur pooja ka saaman {shop} par stock mein hai. List bhejiye, ready rakh denge. 🪔"
+    },
+    {
+      "id": "win_back",
+      "priority": 3,
+      "rule": {
+        "type": "cycle",
+        "at": 2.5
+      },
+      "template": "{name} ji, aap kaafi dino se nahi aaye. Sab theek hai na? Kuch bhi chahiye ho toh {shop} ko yaad kariye. 🙏"
+    }
+  ],
+  "id": "kirana",
+  "max_messages_per_day": 30
+}

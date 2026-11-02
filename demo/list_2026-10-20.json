@@ -1,0 +1,152 @@
+{
+  "clothing": {
+    "store": "Rangoli Sarees",
+    "list": [
+      {
+        "name": "Manoj Gupta",
+        "moment": "thank_you",
+        "message": "Namaste Manoj ji! Rangoli Sarees se suit lene ke liye dhanyavaad. Koi alteration ya size change chahiye ho toh isi number par message kar dijiye. 🙏"
+      },
+      {
+        "name": "Ajay Joshi",
+        "moment": "thank_you",
+        "message": "Namaste Ajay ji! Rangoli Sarees se saree lene ke liye dhanyavaad. Koi alteration ya size change chahiye ho toh isi number par message kar dijiye. 🙏"
+      },
+      {
+        "name": "Neha Sharma",
+        "moment": "win_back",
+        "message": "Neha ji, kaafi samay ho gaya! Rangoli Sarees mein naye designs aaye hain jo aapko pasand aayenge. Kabhi bhi aaiye, hum aapka intezaar karenge. 🙏"
+      }
+    ]
+  },
+  "kirana": {
+    "store": "Sharma General Store",
+    "list": [
+      {
+        "name": "Ajay Agarwal",
+        "moment": "due_reminder",
+        "message": "Namaste Ajay ji! Sharma General Store se aapka mahine ka saaman? List bhej dijiye, hum ghar par deliver kar denge. 🛒"
+      },
+      {
+        "name": "Pooja Singh",
+        "moment": "due_reminder",
+        "message": "Namaste Pooja ji! Sharma General Store se aapka mahine ka saaman? List bhej dijiye, hum ghar par deliver kar denge. 🛒"
+      },
+      {
+        "name": "Deepak Gupta",
+        "moment": "due_reminder",
+        "message": "Namaste Deepak ji! Sharma General Store se aapka mahine ka saaman? List bhej dijiye, hum ghar par deliver kar denge. 🛒"
+      },
+      {
+        "name": "Anita Agarwal",
+        "moment": "due_reminder",
+        "message": "Namaste Anita ji! Sharma General Store se aapka mahine ka saaman? List bhej dijiye, hum ghar par deliver kar denge. 🛒"
+      },
+      {
+        "name": "Anita Meena",
+        "moment": "due_reminder",
+        "message": "Namaste Anita ji! Sharma General Store se aapka mahine ka saaman? List bhej dijiye, hum ghar par deliver kar denge. 🛒"
+      },
+      {
+        "name": "Meena Agarwal",
+        "moment": "due_reminder",
+        "message": "Namaste Meena ji! Sharma General Store se aapka mahine ka saaman? List bhej dijiye, hum ghar par deliver kar denge. 🛒"
+      },
+      {
+        "name": "Ritu Choudhary",
+        "moment": "due_reminder",
+        "message": "Namaste Ritu ji! Sharma General Store se aapka mahine ka saaman? List bhej dijiye, hum ghar par deliver kar denge. 🛒"
+      },
+      {
+        "name": "Priya Jain",
+        "moment": "due_reminder",
+        "message": "Namaste Priya ji! Sharma General Store se aapka mahine ka saaman? List bhej dijiye, hum ghar par deliver kar denge. 🛒"
+      },
+      {
+        "name": "Deepak Joshi",
+        "moment": "due_reminder",
+        "message": "Namaste Deepak ji! Sharma General Store se aapka mahine ka saaman? List bhej dijiye, hum ghar par deliver kar denge. 🛒"
+      },
+      {
+        "name": "Neha Khandelwal",
+        "moment": "due_reminder",
+        "message": "Namaste Neha ji! Sharma General Store se aapka mahine ka saaman? List bhej dijiye, hum ghar par deliver kar denge. 🛒"
+      }
+    ]
+  },
+  "salon": {
+    "store": "Glow Salon",
+    "list": [
+      {
+        "name": "Sunita Khandelwal",
+        "moment": "due_reminder",
+        "message": "Hi Sunita! Aapka last hair colour lagbhag 23 din pehle hua tha. Is hafte ka slot book karein? Bas din aur time reply kar dijiye. ✂️"
+      },
+      {
+        "name": "Divya Singh",
+        "moment": "due_reminder",
+        "message": "Hi Divya! Aapka last haircut lagbhag 27 din pehle hua tha. Is hafte ka slot book karein? Bas din aur time reply kar dijiye. ✂️"
+      },
+      {
+        "name": "Arjun Verma",
+        "moment": "due_reminder",
+        "message": "Hi Arjun! Aapka last facial lagbhag 35 din pehle hua tha. Is hafte ka slot book karein? Bas din aur time reply kar dijiye. ✂️"
+      },
+      {
+        "name": "Ajay Mathur",
+        "moment": "win_back",
+        "message": "Hi Ajay, aapko miss kar rahe hain! Jab bhi time ho, Glow Salon mein ek slot book kar lijiye. 🙂"
+      }
+    ]
+  },
+  "sweets": {
+    "store": "Mithaas Sweets",
+    "list": [
+      {
+        "name": "Suresh Agarwal",
+        "moment": "birthday",
+        "message": "Suresh ji, 3 din mein aapke ghar par birthday hai! Cake ya mithai ka pre-order Mithaas Sweets par aaj hi kar dijiye. 🎂"
+      },
+      {
+        "name": "Suresh Joshi",
+        "moment": "birthday",
+        "message": "Suresh ji, 3 din mein aapke ghar par birthday hai! Cake ya mithai ka pre-order Mithaas Sweets par aaj hi kar dijiye. 🎂"
+      },
+      {
+        "name": "Ajay Sharma",
+        "moment": "thank_you",
+        "message": "Ajay ji, Mithaas Sweets se order ke liye dhanyavaad! Agli baar pre-order ke liye isi number par message kar dijiye. 🙏"
+      },
+      {
+        "name": "Priya Gupta",
+        "moment": "thank_you",
+        "message": "Priya ji, Mithaas Sweets se order ke liye dhanyavaad! Agli baar pre-order ke liye isi number par message kar dijiye. 🙏"
+      },
+      {
+        "name": "Amit Mathur",
+        "moment": "thank_you",
+        "message": "Amit ji, Mithaas Sweets se order ke liye dhanyavaad! Agli baar pre-order ke liye isi number par message kar dijiye. 🙏"
+      },
+      {
+        "name": "Arjun Sharma",
+        "moment": "thank_you",
+        "message": "Arjun ji, Mithaas Sweets se order ke liye dhanyavaad! Agli baar pre-order ke liye isi number par message kar dijiye. 🙏"
+      },
+      {
+        "name": "Meena Saini",
+        "moment": "thank_you",
+        "message": "Meena ji, Mithaas Sweets se order ke liye dhanyavaad! Agli baar pre-order ke liye isi number par message kar dijiye. 🙏"
+      },
+      {
+        "name": "Suresh Choudhary",
+        "moment": "thank_you",
+        "message": "Suresh ji, Mithaas Sweets se order ke liye dhanyavaad! Agli baar pre-order ke liye isi number par message kar dijiye. 🙏"
+      },
+      {
+        "name": "Ajay Sharma",
+        "moment": "win_back",
+        "message": "Ajay ji, Mithaas Sweets mein fresh namkeen bani hai! Kabhi bhi aaiye. 😊"
+      }
+    ]
+  }
+}

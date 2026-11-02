@@ -1,0 +1,52 @@
+{
+  "name": "Sweets / bakery",
+  "default_cycle_days": 45,
+  "min_days_between_messages": 7,
+  "max_messages_per_30_days": 3,
+  "notes": "Occasion-driven. Birthdays and festival pre-orders matter more than visit rhythm.",
+  "moments": [
+    {
+      "id": "thank_you",
+      "priority": 3,
+      "rule": {
+        "type": "days_after_visit",
+        "days": 1,
+        "min_amount": 1000
+      },
+      "template": "{name} ji, {shop} se order ke liye dhanyavaad! Agli baar pre-order ke liye isi number par message kar dijiye. 🙏"
+    },
+    {
+      "id": "birthday",
+      "priority": 1,
+      "rule": {
+        "type": "birthday",
+        "days_before": 3
+      },
+      "template": "{name} ji, 3 din mein aapke ghar par birthday hai! Cake ya mithai ka pre-order {shop} par aaj hi kar dijiye. 🎂"
+    },
+    {
+      "id": "festival",
+      "priority": 1,
+      "rule": {
+        "type": "calendar",
+        "days_before": 5,
+        "events": [
+          "diwali",
+          "bhai_dooj"
+        ]
+      },
+      "template": "{name} ji, {event} ke liye mithai ke dibbe pre-order karein! Aapki pasand: {top_category}. Bas quantity reply kar dijiye. 🪔"
+    },
+    {
+      "id": "win_back",
+      "priority": 3,
+      "rule": {
+        "type": "cycle",
+        "at": 2.0
+      },
+      "template": "{name} ji, {shop} mein fresh {top_category} bani hai! Kabhi bhi aaiye. 😊"
+    }
+  ],
+  "id": "sweets",
+  "max_messages_per_day": 30
+}

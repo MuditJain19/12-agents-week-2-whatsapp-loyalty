@@ -1,0 +1,51 @@
+{
+  "name": "Salon",
+  "default_cycle_days": 35,
+  "min_days_between_messages": 10,
+  "max_messages_per_30_days": 3,
+  "notes": "Clear service cycle. A reminder near the due date with an easy booking reply works best.",
+  "moments": [
+    {
+      "id": "review_ask",
+      "priority": 4,
+      "rule": {
+        "type": "days_after_visit",
+        "days": 2,
+        "first_visit_only": true
+      },
+      "template": "Hi {name}! {shop} mein aane ke liye thank you. Experience kaisa raha? Review yahan de sakte hain: {review_link}"
+    },
+    {
+      "id": "due_reminder",
+      "priority": 2,
+      "rule": {
+        "type": "cycle",
+        "at": 1.0
+      },
+      "template": "Hi {name}! Aapka last {category} lagbhag {days_since} din pehle hua tha. Is hafte ka slot book karein? Bas din aur time reply kar dijiye. ✂️"
+    },
+    {
+      "id": "festival",
+      "priority": 1,
+      "rule": {
+        "type": "calendar",
+        "days_before": 6,
+        "events": [
+          "diwali"
+        ]
+      },
+      "template": "Hi {name}! {event} se pehle ka glow-up? {shop} mein festive slots jaldi bhar rahe hain. Reply karke book kar lijiye. ✨"
+    },
+    {
+      "id": "win_back",
+      "priority": 3,
+      "rule": {
+        "type": "cycle",
+        "at": 1.8
+      },
+      "template": "Hi {name}, aapko miss kar rahe hain! Jab bhi time ho, {shop} mein ek slot book kar lijiye. 🙂"
+    }
+  ],
+  "id": "salon",
+  "max_messages_per_day": 20
+}
