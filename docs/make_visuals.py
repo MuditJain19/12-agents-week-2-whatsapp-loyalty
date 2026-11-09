@@ -9,7 +9,7 @@ BASE = """<html><head><meta charset="utf-8"><style>
 .kick{font-size:22px;letter-spacing:.14em;text-transform:uppercase;color:#a1502a;font-weight:700}
 h1{font-size:54px;line-height:1.08;margin:14px 0 26px;font-weight:800;letter-spacing:-.01em}
 .foot{margin-top:auto;font-size:19px;color:#8a857b;display:flex;justify-content:space-between}
-</style></head><body>{body}<div class="foot"><span>WhatsApp Loyalty Agent · 12 Agents in 12 Weeks · Week 3</span><span>{note}</span></div></body></html>"""
+</style></head><body>{body}<div class="foot"><span>WhatsApp Loyalty Agent · 12 Agents in 12 Weeks · Agent 2</span><span>{note}</span></div></body></html>"""
 page = lambda b, n="Mock shops, fictional customers": BASE.replace("{body}", b).replace("{note}", n)
 
 # 1. The morning list, phone style (mix of stores so all playbooks show)

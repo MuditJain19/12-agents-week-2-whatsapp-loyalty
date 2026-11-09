@@ -2,7 +2,7 @@
 
 **Every morning it tells a shopkeeper which customers to message, and what to say. Each message is a WhatsApp link with the text already written: tap, check, send. It also keeps 15% of customers aside, so the shop can see whether the messages actually bring people back.**
 
-Week 3 of *12 Agents in 12 Weeks*. Built for my family's clothing store; demo on mock data for 4 fictional shops.
+Agent 2 of *12 Agents in 12 Weeks*. Built for my family's clothing store; demo on mock data for 4 fictional shops.
 
 ```
 Google Form at the counter (15 seconds per sale)
