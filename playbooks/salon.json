@@ -47,5 +47,11 @@
     }
   ],
   "id": "salon",
-  "max_messages_per_day": 20
+  "max_messages_per_day": 20,
+  "reactivation": {
+    "note": "One-time win-back for imported old customers. The first message also asks for consent; only people who reply Haan get regular messages.",
+    "min_days_since_visit": 70,
+    "per_day": 15,
+    "template": "Hi {name} ji! {shop} se. Bahut time ho gaya aapko dekhe hue. Kya hum aapko WhatsApp par slots aur festive offers ki khabar bhej sakte hain? Bas Haan ya Na likh dijiye. 🙏"
+  }
 }

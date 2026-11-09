@@ -37,5 +37,11 @@
     }
   ],
   "id": "kirana",
-  "max_messages_per_day": 30
+  "max_messages_per_day": 30,
+  "reactivation": {
+    "note": "One-time win-back for imported old customers. The first message also asks for consent; only people who reply Haan get regular messages.",
+    "min_days_since_visit": 30,
+    "per_day": 20,
+    "template": "Namaste {name} ji! {shop} se. Kaafi dino se mulaqat nahi hui. Kya hum aapko WhatsApp par naye saaman aur offers ki khabar bhej sakte hain? Bas Haan ya Na likh dijiye. 🙏"
+  }
 }

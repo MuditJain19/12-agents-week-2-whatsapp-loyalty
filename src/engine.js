@@ -125,4 +125,85 @@ function lift(log, sales, moments, windowDays, asOf) {
   return { window_days: windowDays, messaged: g.sent, held_out: g.held_out, rate_messaged: r1, rate_held_out: r0, diff: r1 - r0, ci95: [r1 - r0 - 1.96 * se, r1 - r0 + 1.96 * se] };
 }
 
-if (typeof module !== 'undefined') module.exports = { dailyRun, lift, buildProfiles, inHoldout, addDays, daysBetween };
+// ===== Old customers: bulk import, win-back campaign, broadcast lists =====
+
+// Indian 10-digit numbers get the 91 country code; anything else keeps its digits.
+function phoneOf(v) {
+  let d = String(v || '').replace(/\D/g, '');
+  if (d.length === 11 && d[0] === '0') d = d.slice(1);
+  return d.length === 10 ? '91' + d : d;
+}
+
+// Phone contacts export (.vcf) -> [{ name, phone }]. One row per contact, first mobile number.
+function parseVcf(text) {
+  const out = [];
+  String(text).replace(/\r\n[ \t]/g, '').split(/BEGIN:VCARD/i).slice(1).forEach(card => {
+    const fn = (card.match(/^FN[^:]*:(.*)$/im) || [])[1];
+    const tel = (card.match(/^TEL[^:]*:(.*)$/im) || [])[1];
+    if (tel) out.push({ name: (fn || 'Customer').trim(), phone: phoneOf(tel) });
+  });
+  return out;
+}
+
+// "Old customers" tab rows -> sales-shaped rows the rest of the engine understands.
+// Unknown last visit counts as one year ago. Consent is only true once the customer said yes.
+function importedToSales(rows, today) {
+  const seen = {};
+  return rows.filter(r => r.phone).map(r => ({
+    date: r.last_visit ? String(r.last_visit).slice(0, 10) : addDays(today, -365),
+    phone: phoneOf(r.phone), name: r.name || 'Customer',
+    amount: Number(r.total_spend) || 0, category: r.category || 'purchase',
+    consent: /^(y|haan|han|ha)/i.test(String(r.consent || '')), opted_out: /^(n|na)/i.test(String(r.consent || '')),
+    birthday: r.birthday || '', source: 'import', last_known: !!r.last_visit
+  })).filter(r => r.phone.length >= 10 && !seen[r.phone] && (seen[r.phone] = true));
+}
+
+// One-time win-back: a few imported customers a day, each messaged once, with the same holdout.
+function reactivationRun(imported, sales, playbook, store, today, log, holdoutPct, skipPhones) {
+  const rc = playbook.reactivation;
+  const lastVisit = {};
+  sales.concat(imported).forEach(s => { if (s.date <= today && (!lastVisit[s.phone] || s.date > lastVisit[s.phone])) lastVisit[s.phone] = s.date; });
+  const logBy = {};
+  log.forEach(l => { (logBy[l.phone] = logBy[l.phone] || []).push(l); });
+  const skip = new Set(skipPhones || []);
+  sales.forEach(s => skip.add(s.phone));                                     // already a form customer: the daily list handles them
+  const pool = imported.filter(c => {
+    if (c.opted_out || skip.has(c.phone)) return false;
+    const mine = logBy[c.phone] || [];
+    if (mine.some(l => l.moment === 'reactivation')) return false;           // once per customer, ever
+    if (mine.some(l => l.status === 'sent' && daysBetween(l.date, today) < playbook.min_days_between_messages)) return false;
+    return daysBetween(lastVisit[c.phone], today) >= rc.min_days_since_visit;
+  });
+  // Known, recent, high-spend customers first: they're the likeliest to come back.
+  pool.sort((a, b) => (b.last_known - a.last_known) || (b.amount - a.amount) || (lastVisit[b.phone] < lastVisit[a.phone] ? -1 : 1));
+  const list = [], entries = [];
+  for (const c of pool.slice(0, rc.per_day)) {
+    const held = inHoldout(c.phone, holdoutPct);
+    const text = fill(rc.template, { name: c.name.split(' ')[0], shop: store.name });
+    const entry = { date: today, store: store.id, phone: c.phone, name: c.name, moment: 'reactivation', event: '', status: held ? 'held_out' : 'sent', days_since: daysBetween(lastVisit[c.phone], today), cycle: '' };
+    entries.push(entry);
+    if (!held) list.push(Object.assign({}, entry, { message: text, link: waLink(c.phone, text) }));
+  }
+  return { list, entries, remaining: pool.length - entries.length };
+}
+
+// Customers who said yes, split into WhatsApp broadcast lists (max 256 each), most recent first.
+// A broadcast only reaches people who saved the shop's number, so this is for festival announcements, not win-backs.
+function broadcastLists(sales, today, size) {
+  const by = {};
+  sales.filter(s => s.date <= today).forEach(s => {
+    const p = by[s.phone] = by[s.phone] || { phone: s.phone, name: s.name, last: s.date, consent: false, opted_out: false };
+    if (s.date > p.last) p.last = s.date;
+    if (s.consent === true) p.consent = true;
+    if (s.opted_out) p.opted_out = true;
+  });
+  const yes = Object.values(by).filter(p => p.consent && !p.opted_out).sort((a, b) => a.last < b.last ? 1 : -1);
+  const n = size || 256;
+  return yes.map((p, i) => ({ list: 'Broadcast ' + (Math.floor(i / n) + 1), name: p.name, phone: p.phone, last_visit: p.last }));
+}
+
+function toVcf(rows) {
+  return rows.map(r => 'BEGIN:VCARD\nVERSION:3.0\nFN:' + r.name + '\nTEL;TYPE=CELL:+' + r.phone + '\nEND:VCARD').join('\n') + '\n';
+}
+
+if (typeof module !== 'undefined') module.exports = { dailyRun, lift, buildProfiles, inHoldout, addDays, daysBetween, phoneOf, parseVcf, importedToSales, reactivationRun, broadcastLists, toVcf };

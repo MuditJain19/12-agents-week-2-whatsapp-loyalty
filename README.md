@@ -5,16 +5,18 @@
 Agent 2 of *12 Agents in 12 Weeks*. Built for my family's clothing store; demo on mock data for 4 fictional shops.
 
 ```
-Google Form at the counter (15 seconds per sale)
+Google Form at the counter (15 seconds per sale)    +  old customers from your phone or register, pasted in once
         ▼
 n8n, 9 AM daily (no AI, no paid API)
   ├─ learns each customer's buying rhythm from their past visits
   ├─ applies the store's playbook: thank-you, review ask, festival, birthday, "due", "we miss you"
   ├─ respects limits: one message a day, a gap between messages, a monthly cap, consent only
   ├─ ranks by importance, then by customer value, and keeps a list short enough to tap through
+  ├─ win-back campaign for old customers: about 20 a day, once each, asking for consent
   └─ holds out 15% of customers on purpose (they get nothing) and logs every decision
         ▼
 "Today" tab in Google Sheets: name, message, WhatsApp link → shopkeeper taps and sends
+"Broadcast lists" tab: everyone who said yes, in groups of 256, for festival announcements
         ▼
 "Report" tab: did messaged customers come back more than held-out ones?
 ```
@@ -39,6 +41,19 @@ Want it fully automatic? Swap the "Today" tab for the WhatsApp Business API. Eve
 | Sweets / bakery | about 45 days | Thank-you on big orders, birthday pre-order 3 days before, festival pre-orders, fresh batch | 30 |
 
 Each customer's own rhythm replaces the default once they have 3 or more visits. Messages are in Hinglish; edit the templates freely. The festival calendar is in `playbooks/calendar.json`; check the dates for your city and year.
+
+## Old customers: import once, win back slowly
+
+Most shops already have hundreds of past customers in a phone or a register. Paste them into the `Old customers` tab (or convert a phone export with `node tools/vcf_to_csv.js contacts.vcf`), and the agent:
+
+1. **Runs a one-time win-back**, about 20 people a day, most valuable first. Each message is playbook-specific and **asks for consent** ("Haan ya Na"). Old contacts never agreed to updates, so nobody gets a second message unless they say yes.
+2. **Moves the yeses into the normal playbook** (festivals, reminders), and never lists the nos again.
+3. **Builds broadcast lists** of everyone who said yes, for WhatsApp Business broadcasts (max 256 per list, and only people who saved your number receive them).
+4. **Measures it with the same 15% holdout**, so the shop can see whether the win-back worked.
+
+The slow pace is deliberate: messaging hundreds of numbers in a day is how WhatsApp numbers get reported and banned.
+
+**Demo** (`node demo/import_demo.js`): Rangoli Sarees imports 220 old customers (140 with register details). The campaign reaches everyone in 11 days: 189 messaged, 31 held out. 64 said Haan, 8 said Na. On 3 November, 30 of those yeses get the Diwali message in the normal list, and the broadcast list has 64 contacts. With a planted effect, 7.2% of messaged customers came back within 21 days versus 3.7% held out (+3.5 points, 95% range −4.7 to +11.7). One campaign at one shop is too small to prove it, which is exactly why the holdout keeps running.
 
 ## The honest part: did it work?
 
@@ -66,8 +81,10 @@ Reproduce: `node src/simulate.js`
 | `playbooks/*.json` | The 4 store playbooks and the festival calendar |
 | `src/engine.js` | Customer rhythm, playbook rules, limits, holdout, lift report |
 | `src/simulate.js` | Mock data for the 4 shops, with the agent running daily |
+| `tools/vcf_to_csv.js` | Turns a phone contacts export (.vcf) into rows for the `Old customers` tab |
+| `demo/import_demo.js` | Old-customer import, win-back campaign and broadcast lists for one mock shop |
 | `setup/google-form.md` | Form questions, sheet tabs, 20-minute setup |
-| `demo/` | Today's lists (3 Nov), message log, lift report, mock sales |
+| `demo/` | Today's lists (3 Nov), message log, lift report, mock sales, win-back report, sample .vcf and broadcast lists |
 
 ## Limitations
 
@@ -75,6 +92,8 @@ Reproduce: `node src/simulate.js`
 - The tap limit means some due customers wait a day or two. Busy festival weeks will leave some out.
 - Messages are templates, not personalised AI text. That keeps it free and predictable. Add Claude if you want variety.
 - The lift report is only as good as the logging. Don't message held-out customers manually, or the comparison breaks.
-- Respect consent: only customers who said yes are ever listed.
+- Respect consent: only customers who said yes get regular messages. Imported old customers get exactly one message, which asks.
+- The import can't tell customers from family or suppliers in a phone's contacts. Clean the list before pasting it in.
+- Broadcasts only reach people who saved the shop's number. Reaching everyone automatically needs the paid WhatsApp Business API.
 
 All shops, customers and phone numbers in this repo are fictional. Phone numbers start with 0 after the country code, so they are not real WhatsApp numbers.

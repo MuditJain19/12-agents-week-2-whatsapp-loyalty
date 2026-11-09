@@ -48,5 +48,11 @@
     }
   ],
   "id": "clothing",
-  "max_messages_per_day": 30
+  "max_messages_per_day": 30,
+  "reactivation": {
+    "note": "One-time win-back for imported old customers. The first message also asks for consent; only people who reply Haan get regular messages.",
+    "min_days_since_visit": 120,
+    "per_day": 20,
+    "template": "Namaste {name} ji! {shop} se yaad kar rahe hain. Hamare yahan nayi festival aur shaadi collection aayi hai. Kya hum aapko kabhi-kabhi nayi collection ki khabar WhatsApp par bhej sakte hain? Bas Haan ya Na likh dijiye. 🙏"
+  }
 }

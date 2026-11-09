@@ -48,5 +48,11 @@
     }
   ],
   "id": "sweets",
-  "max_messages_per_day": 30
+  "max_messages_per_day": 30,
+  "reactivation": {
+    "note": "One-time win-back for imported old customers. The first message also asks for consent; only people who reply Haan get regular messages.",
+    "min_days_since_visit": 90,
+    "per_day": 20,
+    "template": "Namaste {name} ji! {shop} se. Tyohaar aur birthday ke orders ke liye hum yaad aaye? Kya hum aapko WhatsApp par naye items aur festival pre-orders ki khabar bhej sakte hain? Bas Haan ya Na likh dijiye. 🙏"
+  }
 }
