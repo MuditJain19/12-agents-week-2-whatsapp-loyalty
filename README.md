@@ -86,6 +86,10 @@ Reproduce: `node src/simulate.js`
 | `setup/google-form.md` | Form questions, sheet tabs, 20-minute setup |
 | `demo/` | Today's lists (3 Nov), message log, lift report, mock sales, win-back report, sample .vcf and broadcast lists |
 
+## Walkthrough
+
+`docs/flow/` has one mockup per screen the shopkeeper sees (counter form, morning list, tap-to-send, old customers, proof), also as `walkthrough.pdf`. Regenerate with `python3 docs/make_flow.py`.
+
 ## Limitations
 
 - Someone has to fill in the form at the counter. If it's skipped, the agent can't see the sale.
